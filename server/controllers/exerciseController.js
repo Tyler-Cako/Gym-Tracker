@@ -18,7 +18,7 @@ const getExercises = asyncHandler(async (req, res) => {
 const getExerciseByType = asyncHandler(async (req, res) => {
     const exercises = await Exercise.find({
         user: req.user.id,
-        exerciseType: req.exerciseType
+        exerciseType: req.params.exerciseId
     })
 
     res.status(200).json(exercises)
@@ -108,5 +108,6 @@ module.exports = {
     getExercises,
     setExercise,
     updateExercise,
-    deleteExercise
+    deleteExercise,
+    getExerciseByType
 }

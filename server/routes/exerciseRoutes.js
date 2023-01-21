@@ -5,12 +5,13 @@ const {
     setExercise,
     updateExercise,
     deleteExercise,
+    getExerciseByType
     } = require('../controllers/exerciseController')
 const { protect } = require('../middleware/authMiddleware')
 
 router.get('/', protect, getExercises)
 
-router.get('/:exerciseId', protect, getExercises)
+router.get('/:exerciseId', protect, getExerciseByType)
 
 router.post('/', protect, setExercise)
 
