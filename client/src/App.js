@@ -1,0 +1,30 @@
+import { useState } from "react"
+import Navbar from "./components/Navbar.js"
+import Dashboard from './routes/Dashboard'
+
+function App() {
+  // isLoggedIn state is used to conditionally display different home screen depending on if the user is logged in or not. Shows user dashboard if logged in, standard landing page otherwise
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  if (isLoggedIn == false){
+    return(
+      <>
+        <a className="button" onClick={(e) => setIsLoggedIn(true)}>Toggle Login</a>
+        <div className="container">
+          <Navbar />
+          <h2>Landing Page</h2>
+        </div>
+      </>
+    )
+  }
+  else {
+    return(
+      <>
+        <a className="button" onClick={(e) => setIsLoggedIn(false)}>Toggle Login</a>
+        <Dashboard name="Tyler"/>
+      </>
+    )
+  }
+}
+
+export default App;

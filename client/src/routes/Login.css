@@ -1,0 +1,34 @@
+.form-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+}
+
+.login-form {
+    width: 40%;
+    height: 60vh;
+    background-color: white;
+    transition: top 2s;
+}
+
+.login-form .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.login-form div {
+    margin-top: 10px;
+}
+
+.home {
+    position: absolute;
+    top: 0;
+    left: 5px;
+}
