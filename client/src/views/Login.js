@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
-//import LOGIN_URL from '../api/axios'
 import "./Login.css"
 
 // Basic login form
 function Login () {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [isSuccess, setIsSuccess] = useState("false")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -16,7 +16,7 @@ function Login () {
             const params = new URLSearchParams()
             params.append('email', email)
             params.append('password', password)
-            const response = await axios.post('/api/users/login', params)
+            const response = await axios.post("/api/users/login", params)
             console.log(JSON.stringify(response?.data))
         } catch(error) {
             throw new Error('Login failed')
