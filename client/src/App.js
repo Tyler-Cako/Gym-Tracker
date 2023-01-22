@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Navbar from "./components/Navbar.js"
-import Dashboard from './routes/Dashboard'
+import Dashboard from './views/Dashboard'
 
 function App() {
   // isLoggedIn state is used to conditionally display different home screen depending on if the user is logged in or not. Shows user dashboard if logged in, standard landing page otherwise

@@ -5,8 +5,12 @@ import Templates from '../components/Templates'
 import NewTemplate from '../components/NewTemplate'
 
 function Dashboard(props) {
+    // Get user from localstorage
+    //JSON.parse(localStorage.getItem("user"))
+
     //display state, used to identify  which dashboard module to display depending on button/default value
     const [displayType, setDisplayType] = useState("workouts")
+    //const [message, setMessage] = useState("")
     
     // Event handler for pressing one of the navigation buttons of the dashboard, changes displayType state accordingly
     const buttonController = (e, type) => {

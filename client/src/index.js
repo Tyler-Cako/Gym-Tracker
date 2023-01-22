@@ -5,8 +5,8 @@ import "./normalize.css"
 import "./skeleton.css"
 import { BrowserRouter } from 'react-router-dom'
 import { Routes, Route } from "react-router-dom";
-import Login from "./routes/Login"
-import Signup from "./routes/Signup"
+import Login from "./views/Login"
+import Signup from "./views/Signup"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
