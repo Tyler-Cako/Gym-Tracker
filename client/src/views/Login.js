@@ -1,13 +1,20 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import AuthContext from '../context/AuthProvider'
+import Message from '../components/Message'
 import axios from 'axios'
+import { Redirect, useHistory } from 'react-router-dom'
 import "./Login.css"
 
 // Basic login form
 function Login () {
+    const { setAuth } = useContext(AuthContext)
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [isSuccess, setIsSuccess] = useState("false")
+    const [isFailure, setIsFailure] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
+    const [errMsg, setErrMsg] = useState("Test")
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -18,13 +25,20 @@ function Login () {
             params.append('password', password)
             const response = await axios.post("/api/users/login", params)
             console.log(JSON.stringify(response?.data))
+            setIsSuccess(true)
         } catch(error) {
-            throw new Error('Login failed')
+            setIsFailure(true)
+            setErrMsg(error.message)
+            console.log(error.message)
+            //throw new Error(error)
         }
     }
 
     return (
         <div className="form-container">
+            {isFailure === true &&
+                <Message messagee={errMsg} />
+            }
             <Link to="/" className="button home">Close</Link>
             <div className="u-cf"/>
             <div className="login-form">
