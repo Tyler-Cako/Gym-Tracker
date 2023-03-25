@@ -1,7 +1,5 @@
-PUT http://localhost:3001/api/exercises/63cad271727433b0419240af HTTP/1.1
+POST http://localhost:3001/api/users/login HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzg0YjU1MWRhNmVmMGQ1NzFjZmE2OCIsImlhdCI6MTY3NDIzNzM2MSwiZXhwIjoxNjc2ODI5MzYxfQ.jMryAR6I4VR366Qy_MxM9f-gYpAi0nuc84xUJn4M-go
 
-exerciseType=Bench Press
-&amount=125
-&primary=true
+email=tylercako@gmail.com
+&password=1234
