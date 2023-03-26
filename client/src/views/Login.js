@@ -1,19 +1,23 @@
-import { Link } from 'react-router-dom'
-import { useState, useContext } from 'react'
-import AuthContext from '../context/AuthProvider'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useState, } from 'react'
+import { useContext } from 'react'
+import useAuth from "../hooks/useAuth"
+import AuthContext from "../context/AuthProvider"
 import Message from '../components/Message'
 import axios from 'axios'
-import { Redirect, useHistory } from 'react-router-dom'
 import "./Login.css"
 
 // Basic login form
 function Login () {
     const { setAuth } = useContext(AuthContext)
 
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/dashboard"
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isFailure, setIsFailure] = useState(false)
-    const [isSuccess, setIsSuccess] = useState(false)
     const [errMsg, setErrMsg] = useState("Test")
 
     const handleSubmit = async (e) => {
@@ -25,7 +29,13 @@ function Login () {
             params.append('password', password)
             const response = await axios.post("/api/users/login", params)
             console.log(JSON.stringify(response?.data))
-            setIsSuccess(true)
+            const name = response?.data?.name
+            const token = response?.data?.token
+            setAuth({ name, token })
+            setEmail("")
+            setPassword("")
+            navigate(from, { replace: true })
+
         } catch(error) {
             setIsFailure(true)
             setErrMsg(error.message)
