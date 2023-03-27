@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import AuthContext from '../context/AuthProvider'
 import useAuth from '../hooks/useAuth'
 
-const RequireAuth = () => {
+const ProtectRoute = () => {
     const { auth } = useAuth();
     const location = useLocation()
     console.log(auth.name)
@@ -11,8 +11,8 @@ const RequireAuth = () => {
     return (
         auth?.name
             ? <Outlet />
-            : <Navigate to="/dashboard" state={{ from: location }} replace />    
+            : <Navigate to="/" state={{ from: location }} replace />    
     )
 }
 
-export default RequireAuth
+export default ProtectRoute

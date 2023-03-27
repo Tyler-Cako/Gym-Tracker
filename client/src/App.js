@@ -5,31 +5,34 @@ import Layout from './components/Layout'
 import Default from './components/Default'
 import Login from './views/Login'
 import Signup from './views/Signup'
-import RequireAuth from './components/RequireAuth'
 import Test from './components/Test'
+import Navbar from './components/Navbar'
+import ProtectRoute from './components/ProtectRoute'
 import { Routes, Route } from 'react-router-dom'
 
 
 
 function App() {
-  const { setAuth} = useContext(AuthContext)
+  const { auth } = useContext(AuthContext)
   // isLoggedIn state is used to conditionally display different home screen depending on if the user is logged in or not. Shows user dashboard if logged in, standard landing page otherwise
 
   return(
-    <Routes>
-      <Route path="/" element={<Layout />}>
+    <>
+      <Navbar />
+      <Routes>
         {/* Public Routes */}
-        <Route path="login" element={<Login />}/>
-        <Route path="signup" element={<Signup />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/signup" element={<Signup />}/>
         <Route path="/" element={<Default />}/>
 
         {/* Private Routes */}
-        <Route element={<RequireAuth/>}>
+        <Route element={<ProtectRoute />} >
+          <Route path="/test" element={<Test />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
 
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   )
 }
   {/*

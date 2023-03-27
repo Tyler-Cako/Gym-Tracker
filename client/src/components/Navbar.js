@@ -4,20 +4,16 @@ import useAuth from '../hooks/useAuth'
 function Navbar () { 
     const { setAuth, auth } = useAuth();
 
-    /*
     const signout = () => {
         setAuth({})
-    }*/
-
-/*
+    }
     if (auth.name) {
         return (
             <div>
-                <a onClick={signout} className="u-pull-right button-primary">Logout</a>
+                <button onClick={signout} className="u-pull-right button-primary">Logout</button>
             </div>
         )
     } else {
-        */
         return(
             <>
                 <nav>
@@ -29,7 +25,7 @@ function Navbar () {
             </>
         )
     }
-
+}
 //}
 
 export default Navbar;

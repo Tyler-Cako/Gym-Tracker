@@ -1,5 +1,6 @@
-POST http://localhost:3001/api/users/login HTTP/1.1
+GET http://localhost:3001/api/exercises HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 
 email=tylercako@gmail.com
 &password=1234
+&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYzg0YjU1MWRhNmVmMGQ1NzFjZmE2OCIsImlhdCI6MTY3OTkzODQ0MywiZXhwIjoxNjgyNTMwNDQzfQ.bsBDTSd5Q_Cm1G8_UwLn3IF2Kd6TWNzx5WPHXG2u3y8

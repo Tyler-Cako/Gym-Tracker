@@ -1,15 +1,14 @@
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate, useLocation, Redirect } from 'react-router-dom'
 import { useState, } from 'react'
-import { useContext } from 'react'
 import useAuth from "../hooks/useAuth"
-import AuthContext from "../context/AuthProvider"
+import CloseBtn from '../components/CloseBtn'
 import Message from '../components/Message'
 import axios from 'axios'
 import "./Login.css"
 
 // Basic login form
 function Login () {
-    const { setAuth } = useContext(AuthContext)
+    const { setAuth } = useAuth()
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -49,7 +48,7 @@ function Login () {
             {isFailure === true &&
                 <Message messagee={errMsg} />
             }
-            <Link to="/" className="button home">Close</Link>
+            <CloseBtn />
             <div className="u-cf"/>
             <div className="login-form">
                 <form className="container" onSubmit={handleSubmit}>
