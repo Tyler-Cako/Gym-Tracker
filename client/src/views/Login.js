@@ -8,14 +8,17 @@ import "./Login.css"
 
 // Basic login form
 function Login () {
+    // Get context
     const { setAuth } = useContext(AuthContext)
 
+    // Get State
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isFailure, setIsFailure] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
     const [errMsg, setErrMsg] = useState("Test")
 
+    // On submit, check login info with the database
     const handleSubmit = async (e) => {
         e.preventDefault()
 
