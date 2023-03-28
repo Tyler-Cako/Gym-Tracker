@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server/server.js"
+    "devStart": "nodemon server/server.js",
+    "start": "client/react-scripts start",
   },
   "author": "",
   "license": "ISC",
