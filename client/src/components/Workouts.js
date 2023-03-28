@@ -2,22 +2,28 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const Workouts = () => {
-    const [ exercises, setExercises ] = useState()
-
-    const test = () => {
-        console.log("test")
-    }
+    const [ exercises, setExercises ] = useState([])
 
     useEffect(() => {
-        const auth = JSON.parse(localStorage.getItem('user'))
+        const token = JSON.parse(localStorage.getItem('user')).token
 
-        try {
-            axios.get('/api/exercises')
-        } catch (error) {
-            console.log(error)
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
         }
+        const getExercises = async () => {
+            try {
+                const response = await axios.get('/api/exercises', config)
+                setExercises(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        getExercises()
     }, [])
-    
+
     return (
         <>
             <div>Workouts</div>
@@ -26,7 +32,7 @@ const Workouts = () => {
             {exercises
                 ? (
                     <ul>
-                        {/*exercises.map((exercise) => <li>{exercise?.name}</li>)*/}
+                        {Object.values(exercises).map(exercise => <li>{exercise.exerciseType} {exercise.weight}x{exercise.reps}               {exercise.createdAt}</li>)}
                     </ul>
                     )
                 : <p>No exercises available</p>

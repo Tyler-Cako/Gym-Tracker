@@ -31,11 +31,14 @@ function Login () {
         e.preventDefault()
 
         try {
+            /*
             const params = new URLSearchParams()
             params.append('email', email)
             params.append('password', password)
-            const response = await axios.post("/api/users/login", params)
-            console.log(JSON.stringify(response?.data))
+            */
+            const userLogin = { email, password }
+            const response = await axios.post("/api/users/login", userLogin)
+            //console.log(JSON.stringify(response?.data))
             if (response.data) {
                 const { name, email, token } = response.data
                 setAuth({ name, email, token })

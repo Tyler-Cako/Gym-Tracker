@@ -1,3 +1,4 @@
+const path = require('path')
 require('dotenv').config()
 const express = require('express')
 const app = express()
@@ -15,6 +16,11 @@ app.use(express.urlencoded({ extended: false }))
 // Routing
 app.use('/api/exercises', require('./routes/exerciseRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
+
+//Serve frontend
+if (process.env.NODE_ENV = 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')))
+}
 
 // Error Handling Middleware:: sets express error handler to output JSON instead of HTML
 app.use(errorHandler)

@@ -57,18 +57,20 @@ const loginUser = asyncHandler(async (req, res) => {
     const user = await User.findOne({email})
 
     if (user && (await bcrypt.compare(password, user.password))) {
+        token = generateToken(user.id)
         res.json({
             _id: user.id,
             name: user.name,
             email: user.email,
-            token: generateToken(user._id),
+            token: token
         })
+        
     } else {
         res.status(400)
         throw new Error('invalid credentials')
     }
 
-    res.json({ message: 'Login User' })
+    //res.json({ message: 'Login User' })
 })
 
 // Private to /api/users/me

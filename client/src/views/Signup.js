@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
 import "./Login.css"
@@ -9,6 +9,8 @@ function Signup () {
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
 
+    const navigate = useNavigate()
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -18,7 +20,10 @@ function Signup () {
             params.append('email', email)
             params.append('password', password)
             const response = await axios.post('/api/users', params)
-            console.log(JSON.stringify(response?.data))
+            if (response) {
+                localStorage.setItem('user', JSON.stringify(response.data))
+                navigate('/dashboard', { replace: true })
+            }
         } catch(error) {
             throw new Error('Registration failed')
         }
