@@ -55,16 +55,14 @@ const updateExercise = asyncHandler(async (req, res) => {
         throw new Error('Exercise not found')
     }
 
-    const user = await User.findById(req.user.id)
-
     // Check for user
-    if(!user) {
+    if(!req.user) {
         res.status(401)
         throw new Error('User not found')
     }
 
     // Make sure only user's id matches goal user
-    if (exercise.user.toString() != user.id) {
+    if (exercise.user.toString() != req.user.id) {
         res.status(401)
         throw new Error('User not authorized')
     }
@@ -85,16 +83,14 @@ const deleteExercise = asyncHandler(async (req, res) => {
         throw new Error('Exercise not found')
     }
 
-    const user = await User.findById(req.user.id)
-
     // Check for user
-    if(!user) {
+    if(!req.user) {
         res.status(401)
         throw new Error('User not found')
     }
 
     // Make sure only user's id matches goal user
-    if (exercise.user.toString() != user.id) {
+    if (exercise.user.toString() != req.user.id) {
         res.status(401)
         throw new Error('User not authorized')
     }

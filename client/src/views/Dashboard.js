@@ -3,8 +3,11 @@ import Workouts from '../components/Workouts'
 import NewWorkout from '../components/NewWorkout'
 import Templates from '../components/Templates'
 import NewTemplate from '../components/NewTemplate'
+import useAuth from '../hooks/useAuth'
 
 function Dashboard(props) {
+    const { auth } = useAuth()
+    
     // Get user from localstorage
     //JSON.parse(localStorage.getItem("user"))
 
@@ -17,32 +20,39 @@ function Dashboard(props) {
         e.preventDefault()
         setDisplayType(type)
     }   
+    
 
     return(
-        <div className="container">
-            <h1>Welcome to Your Dashboard {props.name}</h1>
-            <div id="display">
-                <ul className="selections">
-                    <li className="selection"><a onClick={(e) => buttonController(e, "workouts")} href="#">Your Workouts</a></li>
-                    <li className="selection"><a onClick={(e) => buttonController(e, "newWorkout")} href="#">New Workout</a></li>
-                    <li className="selection"><a onClick={(e) => buttonController(e, "templates")} href="#">Your Templates</a></li>
-                    <li className="selection"><a onClick={(e) => buttonController(e, "newTemplate")} href="#">New Template</a></li>
-                </ul>
+        <div>
+            <div className="container">
+                    <h1>Welcome to Your Dashboard {auth?.name}</h1>
+                    <div id="display">
+                        <ul className="selections">
+                            <li className="selection"><a onClick={(e) => buttonController(e, "workouts")} href="#">Data</a></li>
+                            <li className="selection"><a onClick={(e) => buttonController(e, "newWorkout")} href="#">New Workout</a></li>
+                            {/*
+                            <li className="selection"><a onClick={(e) => buttonController(e, "templates")} href="#">Your Templates</a></li>
+                            <li className="selection"><a onClick={(e) => buttonController(e, "newTemplate")} href="#">New Template</a></li>
+                            */}
+                        </ul>
             </div>
 
-            {/* Conditionals that display a dashboard module depending ont the value of displayType state */}
+                        {/* Conditionals that display a dashboard module depending ont the value of displayType state */}
             {displayType == "workouts" &&
-                <Workouts />
+                <Workouts  />
             }
             {displayType == "newWorkout" &&
                 <NewWorkout />
             }
+            {/*
             {displayType == "templates" &&
                 <Templates />
             }
             {displayType == "newTemplate" &&
                 <NewTemplate />
             }
+            */}
+            </div>
         </div>
     )
 }

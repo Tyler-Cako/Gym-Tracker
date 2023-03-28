@@ -1,22 +1,30 @@
-import { Link } from 'react-router-dom'
-import { useState, useContext } from 'react'
-import AuthContext from '../context/AuthProvider'
+import { Link, useNavigate, useLocation, Redirect } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import useAuth from "../hooks/useAuth"
+import CloseBtn from '../components/CloseBtn'
 import Message from '../components/Message'
 import axios from 'axios'
-import { Redirect, useHistory } from 'react-router-dom'
 import "./Login.css"
 
 // Basic login form
 function Login () {
-    // Get context
-    const { setAuth } = useContext(AuthContext)
+    const { setAuth } = useAuth()
+
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/dashboard"
 
     // Get State
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isFailure, setIsFailure] = useState(false)
-    const [isSuccess, setIsSuccess] = useState(false)
     const [errMsg, setErrMsg] = useState("Test")
+
+    useEffect(() => {
+        if (localStorage.getItem('user')) {
+            navigate('/dashboard', { replace: true })
+        }
+    })
 
     // On submit, check login info with the database
     const handleSubmit = async (e) => {
@@ -28,7 +36,16 @@ function Login () {
             params.append('password', password)
             const response = await axios.post("/api/users/login", params)
             console.log(JSON.stringify(response?.data))
-            setIsSuccess(true)
+            if (response.data) {
+                const { name, email, token } = response.data
+                setAuth({ name, email, token })
+                localStorage.setItem('user', JSON.stringify(response.data))
+            }
+            
+            setEmail("")
+            setPassword("")
+            navigate(from, { replace: true })
+
         } catch(error) {
             setIsFailure(true)
             setErrMsg(error.message)
@@ -42,7 +59,7 @@ function Login () {
             {isFailure === true &&
                 <Message messagee={errMsg} />
             }
-            <Link to="/" className="button home">Close</Link>
+            <CloseBtn />
             <div className="u-cf"/>
             <div className="login-form">
                 <form className="container" onSubmit={handleSubmit}>
