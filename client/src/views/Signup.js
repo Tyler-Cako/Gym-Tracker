@@ -30,7 +30,6 @@ function Signup () {
     }
     return (
         <div className="form-container">
-            <Link to="/" className="button home">Close</Link>
             <div className="u-cf"/>
             <div className="login-form">
                 <form className="container" onSubmit={handleSubmit}>

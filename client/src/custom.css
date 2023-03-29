@@ -22,3 +22,15 @@ nav {
 .exercise-form {
     margin-top: .75em;
 }
+
+#label-tooltip {
+    width: 10vw;
+    padding: 1vw;
+    background-color: white;
+    box-shadow: 2px 0 35px;
+    opacity: .98;
+}
+
+#label-tooltip ul {
+    list-style-type: none;
+}

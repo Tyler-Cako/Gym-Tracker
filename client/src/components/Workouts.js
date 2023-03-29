@@ -40,7 +40,7 @@ const Workouts = ({ displayType }) => {
                         <tr>
                             <td>{exercise.exerciseType}</td>
                             <td>{exercise.weight}x{exercise.reps}</td>
-                            <td>{exercise.createdAt}</td>
+                            <td>{exercise.createdAt.slice(0, 10)}</td>
                         </tr>
                         )} 
                     </tbody>

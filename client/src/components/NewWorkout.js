@@ -1,13 +1,10 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom'
 
 function NewWorkouts(props) {
     const [type, setType] = useState("")
     const [weight, setWeight] = useState()
     const [reps, setReps] = useState()
-
-    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()

@@ -1,7 +1,6 @@
 import { Link, useNavigate, useLocation, Redirect } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import useAuth from "../hooks/useAuth"
-import CloseBtn from '../components/CloseBtn'
 import Message from '../components/Message'
 import axios from 'axios'
 import "./Login.css"
@@ -62,7 +61,6 @@ function Login () {
             {isFailure === true &&
                 <Message messagee={errMsg} />
             }
-            <CloseBtn />
             <div className="u-cf"/>
             <div className="login-form">
                 <form className="container" onSubmit={handleSubmit}>
