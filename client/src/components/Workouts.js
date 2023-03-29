@@ -28,7 +28,7 @@ const Workouts = ({ displayType }) => {
         <>
             <table className="u-full-width">
                 <tr>
-                    <th>Exercises</th>
+                    <th>Exercise</th>
                     <th>Weight</th>
                     <th>Date</th>
                 </tr>

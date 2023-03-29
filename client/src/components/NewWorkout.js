@@ -51,28 +51,39 @@ function NewWorkouts(props) {
     return(
         <>
             <div className="u-cf"></div>
-            <form onSubmit={handleSubmit} className="workout-form container">
+            <form onSubmit={handleSubmit} className="workout-form">
                 <label for="type">Exercise</label>
                 <input 
                 name="type" 
                 type="text"
                 value={type}
                 onChange={(e) => setType(e.target.value)}
+                className="u-full-width"
                 />
-                <label for="weight">Weight</label>
-                <input 
-                name="weight" 
-                type="number"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                />
-                <label for="reps">Reps</label>
-                <input 
-                name="reps" 
-                type="number"
-                value={reps}
-                onChange={(e) => setReps(e.target.value)}
-                />
+                <div className="row">
+                    <div className="six columns">
+                        <label for="weight">Weight</label>
+                        <input 
+                        name="weight" 
+                        type="number"
+                        value={weight}
+                        className="u-full-width"
+                        onChange={(e) => setWeight(e.target.value)}
+                        />
+                    </div>
+                    <div className="six columns">
+                        <label for="reps">Reps</label>
+                        <input 
+                        name="reps" 
+                        type="number"
+                        value={reps}
+                        className="u-full-width"
+                        onChange={(e) => setReps(e.target.value)}
+                        />
+                    </div>
+
+                </div>
+                
                 <br></br>
                 <button type="submit" className="button-primary">Submit</button>
             </form>

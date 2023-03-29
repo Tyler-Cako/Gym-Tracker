@@ -48,6 +48,7 @@ function Dashboard() {
                             <li className="selection"><a onClick={(e) => buttonController(e, "templates")} href="#">Your Templates</a></li>
                             <li className="selection"><a onClick={(e) => buttonController(e, "newTemplate")} href="#">New Template</a></li>
                             */}
+                <div className="u-cf"></div>
 
                         {/* Conditionals that display a dashboard module depending ont the value of displayType state */}
                 {displayType == "workouts" &&

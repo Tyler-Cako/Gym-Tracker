@@ -12,7 +12,13 @@ nav {
 }
 
 .workout-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1em !important;
+    margin-top: .75em !important;
+}
+
+.exercise-input {
+    margin-left: 0 !important;
+}
+
+.exercise-form {
+    margin-top: .75em;
 }
