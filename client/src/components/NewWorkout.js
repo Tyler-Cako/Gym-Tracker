@@ -49,31 +49,34 @@ function NewWorkouts(props) {
     */
 
     return(
-        <form onSubmit={handleSubmit}>
-            <label for="type">Exercise</label>
-            <input 
-            name="type" 
-            type="text"
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            />
-            <label for="weight">Weight</label>
-            <input 
-            name="weight" 
-            type="number"
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-            />
-            <label for="reps">Reps</label>
-            <input 
-            name="reps" 
-            type="number"
-            value={reps}
-            onChange={(e) => setReps(e.target.value)}
-            />
-            <br></br>
-            <button type="submit" className="button-primary">Submit</button>
-        </form>
+        <>
+            <div className="u-cf"></div>
+            <form onSubmit={handleSubmit} className="workout-form container">
+                <label for="type">Exercise</label>
+                <input 
+                name="type" 
+                type="text"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                />
+                <label for="weight">Weight</label>
+                <input 
+                name="weight" 
+                type="number"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                />
+                <label for="reps">Reps</label>
+                <input 
+                name="reps" 
+                type="number"
+                value={reps}
+                onChange={(e) => setReps(e.target.value)}
+                />
+                <br></br>
+                <button type="submit" className="button-primary">Submit</button>
+            </form>
+        </>
     )
 }
 

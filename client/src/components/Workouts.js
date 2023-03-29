@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Workouts = () => {
+const Workouts = ({ displayType }) => {
     const [ exercises, setExercises ] = useState([])
 
     useEffect(() => {
@@ -26,17 +26,29 @@ const Workouts = () => {
 
     return (
         <>
-            <div>Workouts</div>
-            
+            <table className="u-full-width">
+                <tr>
+                    <th>Exercises</th>
+                    <th>Weight</th>
+                    <th>Date</th>
+                </tr>
 
-            {exercises
-                ? (
-                    <ul>
-                        {Object.values(exercises).map(exercise => <li>{exercise.exerciseType} {exercise.weight}x{exercise.reps}               {exercise.createdAt}</li>)}
-                    </ul>
+                {exercises
+                ?   (
+                    <tbody>
+                        {Object.values(exercises).map(exercise =>
+                        <tr>
+                            <td>{exercise.exerciseType}</td>
+                            <td>{exercise.weight}x{exercise.reps}</td>
+                            <td>{exercise.createdAt}</td>
+                        </tr>
+                        )} 
+                    </tbody>
                     )
                 : <p>No exercises available</p>
-            }
+                }
+            </table>
+            
         </>
     )
 }
