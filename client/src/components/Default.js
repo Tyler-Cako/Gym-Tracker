@@ -17,7 +17,7 @@ const Default = () => {
           <div className="info-container">
             <h1>Beautiful Gym Tracking</h1>
             <h6>Simple tracking and analytics at your fingertips</h6>
-            <a className="button button-primary" onClick={() => navigate('/login', { replace: true })}>Try Now</a>
+            <a className="button button-primary" onClick={() => navigate('/register', { replace: true })}>Try Now</a>
           </div>
         </div>
       </div>
