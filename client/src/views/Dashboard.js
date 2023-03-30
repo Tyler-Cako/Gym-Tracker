@@ -61,7 +61,7 @@ function Dashboard() {
                     <Analyze />
                 }
             </div>
-            {/*
+            {/* TODO
             {displayType == "templates" &&
                 <Templates />
             }

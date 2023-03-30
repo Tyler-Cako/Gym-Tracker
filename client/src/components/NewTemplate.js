@@ -1,3 +1,4 @@
+// Not yet implemented
 function NewTemplate() {
     return(
         <div>

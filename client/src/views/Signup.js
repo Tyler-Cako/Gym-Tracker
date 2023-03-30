@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState } from 'react'
-import "./Login.css"
 
 // Basic signup form, uses Link component from react-router to send user to login if they already own an account.
 function Signup () {

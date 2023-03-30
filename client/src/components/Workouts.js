@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+// Lists all of the available workouts
 const Workouts = ({ displayType }) => {
     const [ exercises, setExercises ] = useState([])
 
@@ -12,6 +13,7 @@ const Workouts = ({ displayType }) => {
                 Authorization: `Bearer ${token}`,
             }
         }
+        // Make axios Post request with token and stuff
         const getExercises = async () => {
             try {
                 const response = await axios.get('/api/exercises', config)
@@ -33,7 +35,7 @@ const Workouts = ({ displayType }) => {
                     <th>Date</th>
                 </tr>
 
-                {exercises
+                {exercises //If exercises available, display those exercises. Otherwise, show that none are available
                 ?   (
                     <tbody>
                         {Object.values(exercises).map(exercise =>

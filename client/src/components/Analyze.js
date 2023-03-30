@@ -8,6 +8,7 @@ const Analyze = () => {
     const [ searched, setSearched ] = useState(false)
     const [ data, setData ] = useState([])
 
+    // Parses API info to used info
     const parseData = (response) => {
         return response.map((exercise, dataKey) => {
             return {
@@ -19,6 +20,7 @@ const Analyze = () => {
         })
     }
 
+    // makes API request to find user's listed exercises
     const findExercise = async (e) => {
         e.preventDefault();
 
@@ -32,6 +34,7 @@ const Analyze = () => {
         try {
             setSearched(true)
             const response = await axios.get(`/api/exercises/${exercise}`, config)
+            // Parse to useable data and set to needed state since Recharts needs that for some reason
             setData(parseData(response.data))
             setExercise("")
         } catch (error) {
@@ -39,6 +42,7 @@ const Analyze = () => {
         }
     }
 
+    // Custom tooltip to display Weight and Reps, which are unused on actual graphs
     const customTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             console.log(payload)
@@ -55,6 +59,7 @@ const Analyze = () => {
         }
     }
 
+    // RenderBarChart seperated for readability
     const renderBarChart = (
     <ResponsiveContainer width="80%" height={480}>
         <BarChart data={data} margin={{ top:25 }}>
@@ -78,6 +83,7 @@ const Analyze = () => {
         setSearched(false)
     }
 
+    // If user searches, dispaly the graph, otherwise, show search menu
     return (
         <>
             {searched==false

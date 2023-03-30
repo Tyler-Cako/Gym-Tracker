@@ -1,21 +1,20 @@
 import { Link, useNavigate } from 'react-router-dom'
-import useAuth from '../hooks/useAuth'
 import "../custom.css"
 
 function Navbar () { 
-    const { setAuth, auth } = useAuth();
-
     const navigate = useNavigate()
 
     const signout = () => {
-        setAuth({})
+        navigate("/")
         localStorage.removeItem('user')
     }
 
+    // For clicking logo on leftside of navbar
     const goHome = () => {
         navigate('/', { replace: true })
     }
 
+    // If user is logged in, show signout and navigation, otherwise, show login menu
     if (localStorage.getItem('user')) {
         return (
             <nav className="container">

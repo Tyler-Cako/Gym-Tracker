@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 
+// Makes an API Post call to make a new exercise for the user
 function NewWorkouts(props) {
     const [type, setType] = useState("")
     const [weight, setWeight] = useState()
@@ -12,6 +13,7 @@ function NewWorkouts(props) {
         const user = JSON.parse(localStorage.getItem('user'))
         const token = user.token
 
+        // Use URLSearchParams() for URLENCODED request, otherwise it just posts JSON and doesnt work
         const params = new URLSearchParams()
         params.append('exerciseType', type)
         params.append('weight', weight)
@@ -20,6 +22,7 @@ function NewWorkouts(props) {
 
         const auth = {
             headers: {
+                // Need Bearer token for token
                 Authorization: `Bearer ${token}`
             }
         }
@@ -28,6 +31,7 @@ function NewWorkouts(props) {
             const response = await axios.post("/api/exercises", params, auth)
 
             if (response) {
+                // Changes state to "workouts" on dashboard. Essentially redirects user to their list of exercises if the request was valid.
                 props.changeView()
             }
         } catch(error) {
@@ -36,14 +40,6 @@ function NewWorkouts(props) {
 
         
     }
-
-    /*
-        exerciseType: req.body.exerciseType,
-        user: req.user.id,
-        weight: req.body.weight,
-        reps: req.body.reps,
-        primary: req.body.primary
-    */
 
     return(
         <>
