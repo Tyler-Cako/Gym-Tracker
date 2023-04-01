@@ -1,9 +1,18 @@
-// Not yet implemented
+import TemplateExercise from './TemplateExercise'
+
 function NewTemplate() {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
+
     return(
-        <div>
-            New Template
-        </div>
+        <>
+            <div className="u-cf"></div>
+            <form className="workout-form">   
+                <TemplateExercise />
+                <button>Add Exercise</button>
+            </form>
+        </>
     )
 }
 

@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import Workouts from '../components/Workouts'
-import NewWorkout from '../components/NewWorkout'
+import Workouts from '../components/Exercises'
+import NewWorkout from '../components/NewExercise'
 import Analyze from '../components/Analyze'
+import Templates from "../components/Templates"
+import NewTemplate from "../components/NewTemplate"
 
 function Dashboard() {
     // Get user from localstorage
@@ -48,6 +50,26 @@ function Dashboard() {
                             <li className="selection"><a onClick={(e) => buttonController(e, "templates")} href="#">Your Templates</a></li>
                             <li className="selection"><a onClick={(e) => buttonController(e, "newTemplate")} href="#">New Template</a></li>
                             */}
+
+                            <button className={displayType=="templates"
+                            ?"button-primary"
+                            :"button" 
+                            }
+                            onClick={(e) => buttonController(e, "templates")} href="#">Templates</button>
+                            {/*
+                            <li className="selection"><a onClick={(e) => buttonController(e, "templates")} href="#">Your Templates</a></li>
+                            <li className="selection"><a onClick={(e) => buttonController(e, "newTemplate")} href="#">New Template</a></li>
+                            */}
+
+                            <button className={displayType=="newTemplate"
+                            ?"button-primary"
+                            :"button" 
+                            }
+                            onClick={(e) => buttonController(e, "newTemplate")} href="#">New Template</button>
+                            {/*
+                            <li className="selection"><a onClick={(e) => buttonController(e, "templates")} href="#">Your Templates</a></li>
+                            <li className="selection"><a onClick={(e) => buttonController(e, "newTemplate")} href="#">New Template</a></li>
+                            */}
                 <div className="u-cf"></div>
 
                         {/* Conditionals that display a dashboard module depending ont the value of displayType state */}
@@ -60,14 +82,15 @@ function Dashboard() {
                 {displayType == "analyze" &&
                     <Analyze />
                 }
+                {displayType == "templates" &&
+                    <Templates />
+                }
+                {displayType == "newTemplate" &&
+                    <NewTemplate />
+                }
             </div>
             {/* TODO
-            {displayType == "templates" &&
-                <Templates />
-            }
-            {displayType == "newTemplate" &&
-                <NewTemplate />
-            }
+
             */}
             </div>
         </div>
