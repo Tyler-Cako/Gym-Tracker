@@ -86,7 +86,7 @@ function Dashboard() {
                     <Templates />
                 }
                 {displayType == "newTemplate" &&
-                    <NewTemplate />
+                    <NewTemplate changeView={() => setDisplayType("templates")}/>
                 }
             </div>
             {/* TODO
