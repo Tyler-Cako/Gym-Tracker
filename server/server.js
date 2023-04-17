@@ -5,7 +5,7 @@ const app = express()
 const { errorHandler } = require('./middleware/errorMiddleware')
 const colors = require('colors')
 const connectDB = require('./config/db')
-const port = process.env.PORT || 3001
+const port = process.env.PORT
 
 connectDB()
 
@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 // Routing
 app.use('/api/exercises', require('./routes/exerciseRoutes'))
 app.use('/api/users', require('./routes/userRoutes'))
+app.use('/api/templates', require('./routes/templateRoutes'))
 
 //Serve frontend
 if (process.env.NODE_ENV = 'production') {
